@@ -1,0 +1,29 @@
+void heapf(vector<int>&v,int n,int i)
+    {
+        int l,r,large=i;
+        l=(i*2)+1;
+        r=(i*2)+2;
+        if((l<n)&&(v[large]<v[l]))
+        {
+            large=l;
+        }
+        if((r<n)&&(v[large]<v[r]))
+        {
+            large=r;
+        }
+        if(i!=large)
+        {
+            swap(v[large],v[i]);
+            heapf(v,n,large);
+        }
+    }
+    vector<int> (vector<int>&v,int n)
+    {
+      int m=n/2;
+      m--;
+      for(int i=m;i>=0;i--)
+      {
+          heapf(v,n,i);
+      }
+      return v;
+    }
