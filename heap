@@ -1,0 +1,82 @@
+#include <bits/stdc++.h> 
+using namespace std;
+ 
+void fast_as_fuck()
+{
+ios_base::sync_with_stdio(false);
+cin.tie(NULL); cout.tie(NULL); 
+#ifndef ONLINE_JUDGE
+freopen("input.txt", "r", stdin);
+freopen("output.txt", "w", stdout);
+#endif
+}
+void del(vector<int>&v,int n)
+{
+    swap(v[1],v[n-1]);
+    n--;
+    int i=1,j=2;
+    while(j<n)
+    {
+        if((j+1)<n&&(v[j+1]>v[j]))
+        {
+            j++;
+        }
+        if(v[j]>v[i])
+        {
+            swap(v[i],v[j]);
+            i=j;
+            j=j*2;
+        }
+        else
+        {
+            break;
+        }
+    }
+}
+void insert(vector<int>&v,int ele)
+{
+    v.push_back(ele);
+    
+    int i=v.size()-1;
+    while(i>1&&v[i]>v[i/2])
+    {
+        swap(v[i],v[i/2]);
+        i=i/2;
+    }
+}
+void work()
+{
+    vector<int>v={0};
+    insert(v,5);
+    insert(v,6);
+    insert(v,20);
+    insert(v,15);
+    insert(v,12);
+    insert(v,10);
+    insert(v,30);
+    for(int i=0;i<v.size();i++)
+    {
+        cout<<v[i]<<" ";
+    }
+    cout<<endl;
+    int n=v.size();
+    del(v,n);
+    del(v,n-1);
+    del(v,n-2);
+    del(v,n-3);
+    del(v,n-4);
+    del(v,n-5);
+    for(int i=0;i<v.size();i++)
+    {
+        cout<<v[i]<<" ";
+    }
+}
+
+
+
+int main()
+{
+    fast_as_fuck();
+    work();
+    return 0;
+}
