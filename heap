@@ -78,5 +78,6 @@ int main()
 {
     fast_as_fuck();
     work();
+cout<<"best";
     return 0;
 }
